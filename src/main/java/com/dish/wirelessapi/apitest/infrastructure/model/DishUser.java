@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import javax.validation.constraints.*;
 
 @Data
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class DishUser {
 
