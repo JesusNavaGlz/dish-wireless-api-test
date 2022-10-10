@@ -8,13 +8,13 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface UserDishUserMapper {
 
-  @Mapping(target="userIdentifier", source="id")
-  @Mapping(target="userActive", source="active")
-  @Mapping(target="userEmail", source="email")
+  @Mapping(target = "userIdentifier", source = "id")
+  @Mapping(target = "userActive", source = "active")
+  @Mapping(target = "userEmail", source = "email")
   User toUser(DishUser dishUser);
 
-  @Mapping(target="id", source="userIdentifier")
-  @Mapping(target="active", source="userActive")
-  @Mapping(target="email", source="userEmail")
+  @Mapping(target = "id", source = "userIdentifier")
+  @Mapping(target = "active", source = "userActive")
+  @Mapping(target = "email", source = "userEmail")
   DishUser toDishUser(User user);
 }

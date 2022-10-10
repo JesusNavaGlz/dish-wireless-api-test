@@ -19,16 +19,6 @@ public class UserService {
     this.provider2 = provider2;
   }
 
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
-  //Este metodo hace algo con un usuario, hay que pasarle ble lbe ble
   public void updateUser(User user) {
 
     System.out.println("Starting user process to update stuff");

@@ -2,6 +2,7 @@ package com.dish.wirelessapi.apitest.infrastructure.controller;
 
 import com.dish.wirelessapi.apitest.domain.service.UserService;
 import com.dish.wirelessapi.apitest.infrastructure.model.DishUser;
+import com.dish.wirelessapi.apitest.infrastructure.utils.UserDishUserMapper;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @MockBeans({
     @MockBean(UserService.class),
-    @MockBean(UserHelper.class)
+    @MockBean(UserDishUserMapper.class)
 })
 @WebMvcTest(controllers = DummyController.class)
 public class DummyControllerIT {
