@@ -1,14 +1,9 @@
 package com.dish.wirelessapi.apitest.infrastructure.controller;
 
-import com.dish.wirelessapi.apitest.domain.model.User;
 import com.dish.wirelessapi.apitest.domain.service.UserService;
-import com.dish.wirelessapi.apitest.infrastructure.helper.UserHelper;
 import com.dish.wirelessapi.apitest.infrastructure.model.DishUser;
+import com.dish.wirelessapi.apitest.infrastructure.utils.UserDishUserMapper;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -24,11 +19,12 @@ import java.util.Map;
 @RestControllerAdvice
 public class DummyController {
 
-  private UserHelper helper;
+  private UserDishUserMapper userMapper;
+
   private UserService service;
 
-  DummyController(UserHelper helper, UserService service) {
-    this.helper = helper;
+  DummyController(UserDishUserMapper userMapper, UserService service) {
+    this.userMapper = userMapper;
     this.service = service;
   }
 
@@ -54,7 +50,7 @@ public class DummyController {
 
     System.out.println("Received User: " + userDetails);
 
-    service.updateUser(helper.toUser(userDetails));
+    service.updateUser(userMapper.toUser(userDetails));
 
     return ResponseEntity.ok().build();
   }

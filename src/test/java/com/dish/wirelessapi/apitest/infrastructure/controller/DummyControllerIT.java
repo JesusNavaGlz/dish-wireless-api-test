@@ -1,7 +1,6 @@
 package com.dish.wirelessapi.apitest.infrastructure.controller;
 
 import com.dish.wirelessapi.apitest.domain.service.UserService;
-import com.dish.wirelessapi.apitest.infrastructure.helper.UserHelper;
 import com.dish.wirelessapi.apitest.infrastructure.model.DishUser;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
