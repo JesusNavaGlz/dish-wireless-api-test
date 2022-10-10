@@ -2,6 +2,7 @@ package com.dish.wirelessapi.apitest.infrastructure.controller;
 
 import com.dish.wirelessapi.apitest.domain.service.UserService;
 import com.dish.wirelessapi.apitest.infrastructure.model.DishUser;
+import com.dish.wirelessapi.apitest.infrastructure.utils.UserDishUserMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,16 +12,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static java.lang.Boolean.TRUE;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DummyControllerTest {
 
   @Mock
   private UserService service;
+
   @Mock
-  private UserHelper helper;
+  private UserDishUserMapper mapper;
 
   @Mock
   private DishUser dishUser;
@@ -35,19 +36,12 @@ class DummyControllerTest {
 
   @Test
   public void shouldFail_whenMissingField() {
-
     controller.validateFields(dishUser);
 
-    verify(helper, times(1)).toUser(any());
     verify(service, times(1)).updateUser(any());
 
   }
 
-  /*
-  Esta prueba valida que bla bla bla
-  necesita bla bla entradas
-  y valida bla bla bla
-   */
   @Test//Clean Code -> Codigo Legible
   public void testSomething() {
     // Inicializar

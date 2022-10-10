@@ -4,6 +4,7 @@ import com.dish.wirelessapi.apitest.domain.service.UserService;
 import com.dish.wirelessapi.apitest.infrastructure.model.DishUser;
 import com.dish.wirelessapi.apitest.infrastructure.utils.UserDishUserMapper;
 import io.swagger.v3.oas.annotations.Operation;
+import org.mapstruct.factory.Mappers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -19,12 +20,11 @@ import java.util.Map;
 @RestControllerAdvice
 public class DummyController {
 
-  private UserDishUserMapper userMapper;
+  private UserDishUserMapper userMapper = Mappers.getMapper(UserDishUserMapper.class);
 
-  private UserService service;
+  private final UserService service;
 
-  DummyController(UserDishUserMapper userMapper, UserService service) {
-    this.userMapper = userMapper;
+  DummyController( UserService service) {
     this.service = service;
   }
 
