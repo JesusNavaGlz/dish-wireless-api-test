@@ -1,8 +1,9 @@
 package com.dish.wirelessapi.apitest.infrastructure.controller;
 
 import com.dish.wirelessapi.apitest.domain.service.UserService;
-import com.dish.wirelessapi.apitest.infrastructure.helper.UserHelper;
 import com.dish.wirelessapi.apitest.infrastructure.model.DishUser;
+import com.dish.wirelessapi.apitest.infrastructure.utils.UserDishUserMapper;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -15,13 +16,15 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("dummy")
+@RestControllerAdvice
 public class DummyController {
 
-  private UserHelper helper;
+  private UserDishUserMapper userMapper;
+
   private UserService service;
 
-  DummyController(UserHelper helper, UserService service) {
-    this.helper = helper;
+  DummyController(UserDishUserMapper userMapper, UserService service) {
+    this.userMapper = userMapper;
     this.service = service;
   }
 
@@ -37,12 +40,17 @@ public class DummyController {
         """;
   }
 
+  @Operation(description = "Input valid User data to be processed")
+//  @ApiResponses({
+//      @ApiResponse(responseCode = "200", description = "User updated successfully"),
+//      @ApiResponse(responseCode = "400", description = "Missing or invalid parameters")
+//  })
   @PutMapping(value = "/validateFields", produces = "application/JSON")
   public ResponseEntity validateFields(@Valid @RequestBody DishUser userDetails) {
 
     System.out.println("Received User: " + userDetails);
 
-    service.updateUser(helper.toUser(userDetails));
+    service.updateUser(userMapper.toUser(userDetails));
 
     return ResponseEntity.ok().build();
   }
@@ -60,4 +68,5 @@ public class DummyController {
     });
     return errors;
   }
+
 }
